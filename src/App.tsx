@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import axiosInstance from './axiosInstance';
+import Searchbar from './Searchbar/Searchbar';
 
 function App() {
-  // const [count, setCount] = useState(0);
+  const [data, setData] = useState({});
+  const [error, setError] = useState({});
 
   useEffect(() => {
     loadData();
@@ -11,17 +12,26 @@ function App() {
 
   const loadData = async () => {
     try {
-      const response = await axiosInstance.get(''); // Replace with your endpoint
-      console.log('response', response);
-      // setData(response);
-    } catch (err) {
-      // setError(err.message);
+      const response = await fetch('https://swapi.py4e.com/api/films/?format=json');
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const result = await response.json();
+      console.log(result)
+      setData(result);
+    } catch (err: any) {
+      setError(err.message);
     }
   };
 
   return (
     <>
-      <div>Hello</div>
+      <div className='d-flex'>
+        <div className='d-flex'>
+          <button className='m-2'>Sort By</button>
+          <Searchbar/>
+        </div>
+      </div>
     </>
   );
 }
