@@ -32,7 +32,7 @@ const listSlice = createSlice({
       state.items = action.payload; // Replace the entire list
     },
     selectItem: (state, action: PayloadAction<number>) => {
-      state.selectedItemId = state.items.find((item) => item.episode_id === action.payload) || null;
+      state.selectedItemId = state.items.find((item) => item.episode_id === action.payload)?.episode_id || null;
     },
     setSearchTerm: (state, action: PayloadAction<string>) => {
       state.searchTerm = action.payload;
