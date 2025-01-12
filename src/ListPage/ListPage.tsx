@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { AppDispatch, RootState } from '../Store/store';
 import { selectItem } from '../Store/listSlice';
+import './ListPage.css';
 
 const ListPage = () => {
 
@@ -9,6 +10,7 @@ const ListPage = () => {
   const sortBy = useSelector((state: RootState) => state.list.sortBy);
   const sortDirection = useSelector((state: RootState) => state.list.sortDirection);
   const searchTerm = useSelector((state: RootState) => state.list.searchTerm);
+  const selectedItemId = useSelector((state: RootState) => state.list.selectedItemId);
 
   // Filtering the list based on the search term
   const filteredList = items.filter((item: any) =>
@@ -31,10 +33,11 @@ const ListPage = () => {
 
   return (
     <>
-      <table>
+      <table className='highlight-table'>
         <tbody>
           {sortedList.map((item: any) => (
-            <tr key={item.episode_id} onClick={() => handleSelectItem(item.episode_id)}>
+            <tr className={selectedItemId?.episode_id === item?.episode_id ? 'selected' : ''}
+              key={item.episode_id} onClick={() => handleSelectItem(item.episode_id)}>
               <td> {item.episode_id} </td>
               <td>{item.title} </td>
               <td>{item.release_date} </td>

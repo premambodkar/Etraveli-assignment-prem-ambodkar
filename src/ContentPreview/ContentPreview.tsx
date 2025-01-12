@@ -2,14 +2,13 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../Store/store';
 import { useEffect, useState } from 'react';
 import StarRating from '../StarRating/StarRating';
+import './ContentPreview.css';
 
 const ContentPreview = () => {
   const selectedItemId = useSelector((state: RootState) => state.list.selectedItemId);
   const selectedItem = useSelector((state: RootState) =>
     state.list.items.find((item) => item.episode_id === selectedItemId)
   );
-
-
   const [loading, setLoading] = useState<boolean>(true);
   const [detailsData, setDetailsData] = useState<any>(null);
 
@@ -37,7 +36,6 @@ const ContentPreview = () => {
       loadImage()
     }
   }, [selectedItemId])
-
 
   if (!selectedItem) {
     return <div>Select an item to preview and edit its details.</div>;

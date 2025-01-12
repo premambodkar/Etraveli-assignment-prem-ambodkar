@@ -2,6 +2,7 @@ import '../App.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../Store/store';
 import { setSearchTerm, setSortBy, setSortDirection } from '../Store/listSlice';
+import './Toolbar.css';
 
 const Toolbar = () => {
   const sortBy = useSelector((state: RootState) => state.list.sortBy);
