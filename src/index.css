@@ -1,5 +1,6 @@
 /* General Reset */
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -16,45 +17,37 @@ body, html {
   width: 100%;
   background-color: #f9f9f9;
 }
-/* Search and Sort Section */
-.search-sort {
-  display: flex;
-  align-items: center;
-  width: 100%; /* Full-width container */
-  gap: 10px; /* Spacing between elements */
-}
-
-.search-box {
-  flex: 9; /* 90% width */
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.sort-button {
-  flex: 1; /* 10% width */
-  padding: 10px;
-  font-size: 16px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  text-align: center;
-}
-
-.sort-button:hover {
-  background-color: #0056b3;
-}
-
 
 /* Bottom Section: Main Content */
 .main-content {
   display: grid;
-  grid-template-columns: 2fr 1fr; /* Table (2 parts) and Preview (1 part) */
+  grid-template-columns: 2fr 1fr;
+  /* Table (2 parts) and Preview (1 part) */
   grid-gap: 10px;
   height: 100%;
+}
+
+.search-sort-container {
+  display: flex;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Box for Sort By and Sort Type buttons (20% width) */
+.sort-container {
+  flex: 0 0 20%;
+  /* Takes up 20% of the available width */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.search-box {
+  flex: 0 0 80%;
+  /* Takes up 80% of the available width */
+  display: flex;
+  justify-content: flex-end;
+  /* Align search input to the right */
 }
 
 /* Table Container */
@@ -75,7 +68,8 @@ table thead {
   color: white;
 }
 
-table th, table td {
+table th,
+table td {
   padding: 10px;
   text-align: left;
   border: 1px solid #ccc;
@@ -95,4 +89,68 @@ table tr:nth-child(even) {
 
 .content-preview h3 {
   margin-top: 0;
+}
+
+tr {
+  cursor: pointer;
+}
+
+
+/* Container for the filter buttons */
+.filter-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Style for the Sort By dropdown */
+.sort-by {
+  display: flex;
+  align-items: center;
+}
+
+.sort-by label {
+  margin-right: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+.sort-select {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  background-color: #fff;
+  transition: border-color 0.3s ease;
+}
+
+.sort-select:hover {
+  border-color: #007bff;
+}
+
+/* Style for the Order By button */
+.order-btn {
+  padding: 10px 20px;
+  font-size: 14px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.order-btn:hover {
+  background-color: #0056b3;
+}
+
+.order-btn:active {
+  transform: scale(0.98);
+}
+
+.order-btn:focus {
+  outline: none;
 }

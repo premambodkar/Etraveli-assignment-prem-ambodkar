@@ -6,9 +6,9 @@ const ContentPreview = () => {
     state.list.items.find((item) => item.episode_id === state.list.selectedItemId)
   );
 
-  // if (!selectedItem) {
-  //   return <div>Select an item to preview and edit its details.</div>;
-  // }
+  if (!selectedItem) {
+    return <div>Select an item to preview and edit its details.</div>;
+  }
 
   return (
     <>

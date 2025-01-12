@@ -4,6 +4,8 @@ interface ListState {
   items: ListItem[];
   selectedItemId: any;
   searchTerm: string;
+  sortBy: string;
+  sortDirection: 'desc' | 'asc';
 }
 
 interface ListItem {
@@ -17,7 +19,9 @@ interface ListItem {
 const initialState: ListState = {
   items: [],
   selectedItemId: null,
-  searchTerm: ''
+  searchTerm: '',
+  sortBy: '',
+  sortDirection: 'desc',
 };
 
 const listSlice = createSlice({
@@ -33,11 +37,17 @@ const listSlice = createSlice({
     setSearchTerm: (state, action: PayloadAction<string>) => {
       state.searchTerm = action.payload;
     },
+    setSortBy: (state, action: PayloadAction<string>) => {
+      state.sortBy = action.payload;
+    },
+    setSortDirection: (state, action: PayloadAction<'asc' | 'desc'>) => {
+      state.sortDirection = action.payload;
+    },
     clearList: (state) => {
       state.items = []; // Clear the list
     },
   },
 });
 
-export const { setList, selectItem,setSearchTerm, clearList } = listSlice.actions;
+export const { setList, selectItem, setSearchTerm, setSortBy, setSortDirection, clearList } = listSlice.actions;
 export default listSlice.reducer;

@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import Searchbar from './Searchbar/Searchbar';
 import { useDispatch } from 'react-redux';
-import { setList, clearList } from './Store/listSlice';
+import { setList } from './Store/listSlice';
 import ListPage from './ListPage/ListPage';
 import ContentPreview from './ContentPreview/ContentPreview';
+import Toolbar from './Toolbar/Toolbar';
 
 function App() {
-  const [error, setError] = useState({});
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -24,21 +23,13 @@ function App() {
       console.log("Data", result.results)
       dispatch(setList(result.results))
     } catch (err: any) {
-      // dispatch(clearList())
-      setError(err.message);
     }
   };
 
   return (
     <>
       <div className="container">
-        <div className="search-sort">
-          <button className="sort-button">Sort By</button>
-          <div className="search-box">
-            <Searchbar />
-          </div>
-
-        </div>
+      <Toolbar />
         <div className="main-content">
           <div className="table-container">
           <ListPage />
