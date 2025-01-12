@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 interface ListState {
   items: ListItem[];
   selectedItemId: any;
+  searchTerm: string;
 }
 
 interface ListItem {
@@ -15,7 +16,8 @@ interface ListItem {
 
 const initialState: ListState = {
   items: [],
-  selectedItemId: null
+  selectedItemId: null,
+  searchTerm: ''
 };
 
 const listSlice = createSlice({
@@ -28,11 +30,14 @@ const listSlice = createSlice({
     selectItem: (state, action: PayloadAction<number>) => {
       state.selectedItemId = state.items.find((item) => item.episode_id === action.payload) || null;
     },
+    setSearchTerm: (state, action: PayloadAction<string>) => {
+      state.searchTerm = action.payload;
+    },
     clearList: (state) => {
       state.items = []; // Clear the list
     },
   },
 });
 
-export const { setList, selectItem, clearList } = listSlice.actions;
+export const { setList, selectItem,setSearchTerm, clearList } = listSlice.actions;
 export default listSlice.reducer;
