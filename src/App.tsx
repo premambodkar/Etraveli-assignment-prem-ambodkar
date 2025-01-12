@@ -1,10 +1,14 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import Searchbar from './Searchbar/Searchbar';
+import { useDispatch } from 'react-redux';
+import { setList, clearList } from './Store/listSlice';
+import ListPage from './ListPage/ListPage';
+import ContentPreview from './ContentPreview/ContentPreview';
 
 function App() {
-  const [data, setData] = useState({});
   const [error, setError] = useState({});
+  const dispatch = useDispatch();
 
   useEffect(() => {
     loadData();
@@ -17,19 +21,31 @@ function App() {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const result = await response.json();
-      console.log(result)
-      setData(result);
+      console.log("Data", result.results)
+      dispatch(setList(result.results))
     } catch (err: any) {
+      // dispatch(clearList())
       setError(err.message);
     }
   };
 
   return (
     <>
-      <div className='d-flex'>
-        <div className='d-flex'>
-          <button className='m-2'>Sort By</button>
-          <Searchbar/>
+      <div className="container">
+        <div className="search-sort">
+          <button className="sort-button">Sort By</button>
+          <div className="search-box">
+            <Searchbar />
+          </div>
+
+        </div>
+        <div className="main-content">
+          <div className="table-container">
+          <ListPage />
+          </div>
+          <div className="content-preview">
+          <ContentPreview />
+          </div>
         </div>
       </div>
     </>

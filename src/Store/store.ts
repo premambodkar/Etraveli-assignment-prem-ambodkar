@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 // Import your slice reducers
-import counterReducer from './counterSlice';
+import listSlice from './listSlice';
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    list: listSlice,
   },
 });
 
