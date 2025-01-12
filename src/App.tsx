@@ -29,13 +29,13 @@ function App() {
   return (
     <>
       <div className="container">
-      <Toolbar />
+        <Toolbar />
         <div className="main-content">
           <div className="table-container">
-          <ListPage />
+            <ListPage />
           </div>
           <div className="content-preview">
-          <ContentPreview />
+            <ContentPreview />
           </div>
         </div>
       </div>

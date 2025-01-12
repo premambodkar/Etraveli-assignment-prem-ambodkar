@@ -18,14 +18,7 @@ html {
   background-color: #f9f9f9;
 }
 
-/* Bottom Section: Main Content */
-.main-content {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  /* Table (2 parts) and Preview (1 part) */
-  grid-gap: 10px;
-  height: 100%;
-}
+
 
 .search-sort-container {
   display: flex;

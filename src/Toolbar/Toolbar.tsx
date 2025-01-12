@@ -36,7 +36,7 @@ const Toolbar = () => {
               <option value="release_date">Sort by Year</option>
             </select>
           </div>
-          <button className="order-btn" id="order-btn" onClick={handleSortDirectionChange} > Sort {sortDirection === 'asc' ? 'Descending' : 'Ascending'}</button>
+          <button className="order-btn" id="order-btn" onClick={handleSortDirectionChange} > {sortDirection === 'asc' ? <span>&#9660;</span> : <span>&#9650;</span>}</button>
         </div>
 
         <div className="search-box">

@@ -1,6 +1,3 @@
-
-
-
 .container {
   width: 100%;
   padding-right: var(--bs-gutter-x, 15px);
@@ -8,6 +5,44 @@
   margin-right: auto;
   margin-left: auto;
 }
+
+/* Bottom Section: Main Content */
+.main-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  /* Table (2 parts) and Preview (1 part) */
+  grid-gap: 10px;
+  height: 100%;
+}
+
+/* Table Container */
+.table-container {
+  overflow-y: auto;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Content Preview */
+.content-preview {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 20px;
+}
+
+.content-preview h3 {
+  margin-top: 0;
+}
+
+.m-0 { margin: 0 !important; }
+.m-1 { margin: 0.25rem !important; }
+.m-2 { margin: 0.5rem !important; }
+.m-3 { margin: 1rem !important; }
+.m-4 { margin: 1.5rem !important; }
+.m-5 { margin: 3rem !important; }
+.m-auto { margin: auto !important; }
+
 
 @media (min-width: 576px) {
   .container {
